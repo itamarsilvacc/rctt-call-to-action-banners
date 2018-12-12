@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Imagem CTA
+Plugin Name: Banner CTA
 Plugin URI: https://itamarsilva.eti.br
 Description: Esse plugin possibilita que o usuário adicione banners com link e imagem que possam ser inseridos em qualquer post utilizando shortcodes.
 Version: 0.1.1
@@ -12,11 +12,11 @@ Text Domain:  rctt-call-to-action-images
 */
 
 /**
-* Create Images CTA's Post Type
+* Create Banners CTA's Post Type
 */
 function rctt_image_cta_post_type(){
 
-    /* Register post type for Images CTA's */
+    /* Register post type for Banners CTA's */
 	register_post_type('rctt_image_cta', array(
 		'labels' => array(
 				'name' => 'CTA\'s',
@@ -34,13 +34,13 @@ function rctt_image_cta_post_type(){
 			'rewrite' => false
 	));
 
-    /* Add image size for Images CTA's */
+    /* Add image size for Banners CTA's */
     add_image_size( 'image-cta', 960, 300, true );
 }
 add_action('init', 'rctt_image_cta_post_type');
 
 /**
-* Add custom field URL for Images CTA
+* Add custom field URL for Banners CTA
 */
 function rctt_image_cta_url() {
     global $post;
@@ -62,7 +62,7 @@ function rctt_image_cta_url() {
 add_action( 'edit_form_after_title', 'rctt_image_cta_url' );
 
 /**
-* Save custom field URL for Images CTA
+* Save custom field URL for Banners CTA
 */
 function rctt_image_cta_url_save( $post_id )
 {
@@ -82,7 +82,7 @@ function rctt_image_cta_url_save( $post_id )
 add_action( 'save_post', 'rctt_image_cta_url_save' );
 
 /**
-* Remove permalink from MetaBox Images CTA
+* Remove permalink from MetaBox Banners CTA
 */
 function rctt_image_cta_sample_permalink_remove( $return ) {
 	global $post;
@@ -97,7 +97,7 @@ function rctt_image_cta_sample_permalink_remove( $return ) {
 add_filter( 'get_sample_permalink_html', 'rctt_image_cta_sample_permalink_remove' );
 
 /**
-* Create Images CTA Shortcode
+* Create Banners CTA Shortcode
 */
 function rctt_image_cta_shortcode( $atts ) {
     $image_cta = get_post( $atts['id'] );
