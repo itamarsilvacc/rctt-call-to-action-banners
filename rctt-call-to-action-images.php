@@ -8,16 +8,16 @@ Author: Itamar Silva
 Author URI: https://itamarsilva.eti.br
 License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  rctt-call-to-action-images
+Text Domain:  rctt-call-to-action-banners
 */
 
 /**
 * Create Banners CTA's Post Type
 */
-function rctt_image_cta_post_type(){
+function rctt_image_cta_post_type() {
 
     /* Register post type for Banners CTA's */
-	register_post_type('rctt_image_cta', array(
+	register_post_type( 'rctt_image_cta', array(
 		'labels' => array(
 				'name' => 'CTA\'s',
 				'singular_name' => 'CTA'
@@ -37,7 +37,7 @@ function rctt_image_cta_post_type(){
     /* Add image size for Banners CTA's */
     add_image_size( 'image-cta', 960, 300, true );
 }
-add_action('init', 'rctt_image_cta_post_type');
+add_action( 'init', 'rctt_image_cta_post_type' );
 
 /**
 * Add custom field URL for Banners CTA
@@ -118,4 +118,4 @@ function rctt_image_cta_shortcode( $atts ) {
             get_the_post_thumbnail( $atts['id'], 'image-cta' )
         );
 }
-add_shortcode('banner-cta', 'rctt_image_cta_shortcode');
+add_shortcode( 'banner-cta', 'rctt_image_cta_shortcode' );
