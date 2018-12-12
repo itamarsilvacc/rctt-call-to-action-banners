@@ -12,9 +12,11 @@ Text Domain:  rctt-call-to-action-images
 */
 
 /**
-* Create Images CTA Post Type
+* Create Images CTA's Post Type
 */
 function rctt_image_cta_post_type(){
+
+    /* Register post type for Images CTA's */
 	register_post_type('rctt_image_cta', array(
 		'labels' => array(
 				'name' => 'CTA\'s',
@@ -31,6 +33,9 @@ function rctt_image_cta_post_type(){
 				),
 			'rewrite' => false
 	));
+
+    /* Add image size for Images CTA's */
+    add_image_size( 'image-cta', 960, 300, true );
 }
 add_action('init', 'rctt_image_cta_post_type');
 
