@@ -95,3 +95,27 @@ function rctt_image_cta_sample_permalink_remove( $return ) {
 	}
 }
 add_filter( 'get_sample_permalink_html', 'rctt_image_cta_sample_permalink_remove' );
+
+/**
+* Create Images CTA Shortcode
+*/
+function rctt_image_cta_shortcode( $atts ) {
+    $image_cta = get_post( $atts['id'] );
+    $key = 'rctt_image_cta_url_link';
+
+
+    if ( ! $content = get_post_meta( $atts['id'], $key, TRUE ) )
+        $content = '';
+
+        printf(
+            '<div class="rctt-banner-cta">
+                <a href="%1$s" title="%2$s">
+                    %3$s
+                </a>
+            </div>',
+            esc_attr( $content ),
+            $image_cta->post_title,
+            get_the_post_thumbnail( $atts['id'], 'image-cta' )
+        );
+}
+add_shortcode('banner-cta', 'rctt_image_cta_shortcode');
